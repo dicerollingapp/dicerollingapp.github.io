@@ -39,11 +39,13 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>About</h4>
+          <h4>Pages</h4>
           <ul>
-            <li><a href="#about">How It Works</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#about">Free Dice Roll</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Use</a></li>
+            <li><a href="/cookies">Cookies Policy</a></li>
           </ul>
         </div>
       </div>
