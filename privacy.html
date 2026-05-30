@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – DiceRollingApp</title>
+  <meta name="description" content="Privacy Policy for DiceRollingApp. Learn how we handle your data when using our free online virtual dice roller." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://dicerollingapp.github.io/privacy.html" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --off-white: #f8f7ff;
+      --bg: #ffffff;
+      --text: #1a1040;
+      --text-muted: #6b5b95;
+      --accent1: #ff5e78;
+      --accent2: #ffaa00;
+      --accent3: #00c896;
+      --accent4: #5b8cff;
+      --accent5: #b96bff;
+      --shadow-sm: 0 2px 10px rgba(91,140,255,0.12);
+      --shadow-md: 0 6px 30px rgba(91,140,255,0.18);
+      --shadow-lg: 0 16px 60px rgba(91,140,255,0.22);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --header-h: 70px;
+      --font-main: 'Nunito', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-main);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    h1, h2, h3, h4 { font-weight: 800; line-height: 1.25; color: var(--text); }
+    h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 10px; }
+    h2 { font-size: 1.6rem; margin-top: 36px; margin-bottom: 16px; border-bottom: 2px solid rgba(91,140,255,0.1); padding-bottom: 8px; }
+    h3 { font-size: 1.2rem; margin-top: 24px; margin-bottom: 12px; }
+    p { margin-bottom: 18px; color: var(--text-muted); font-size: 1rem; }
+    ul { list-style: disc; margin-left: 24px; margin-bottom: 18px; color: var(--text-muted); }
+    li { margin-bottom: 8px; }
+    a { color: var(--accent4); text-decoration: none; font-weight: 700; transition: color 0.2s; }
+    a:hover { color: var(--accent1); }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      z-index: 1000;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 2px solid rgba(91,140,255,0.12);
+      box-shadow: 0 4px 24px rgba(91,140,255,0.12);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--text);
+    }
+    .logo-icon { font-size: 1.8rem; }
+    .logo-accent { color: var(--accent1); }
+    .main-nav a {
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 50px;
+      color: var(--text-muted);
+      background: #f0edff;
+      transition: all 0.2s;
+    }
+    .main-nav a:hover {
+      background: var(--accent4);
+      color: #fff;
+    }
+
+    /* ===== LEGAL CONTENT ===== */
+    .legal-wrapper {
+      padding-top: calc(var(--header-h) + 50px);
+      padding-bottom: 80px;
+      min-height: 80vh;
+    }
+    .legal-meta {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent1);
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+    .legal-card {
+      background: linear-gradient(145deg, #f8f7ff, #ffffff);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      border: 2px solid rgba(91,140,255,0.1);
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.6);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 4px solid var(--accent5);
+    }
+    .footer-links {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .footer-links a { color: rgba(255,255,255,0.8); font-weight: 600; }
+    .footer-links a:hover { color: var(--accent2); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <span class="logo-icon">🎲</span>
+        <span>Dice<span class="logo-accent">Rolling</span>App</span>
+      </a>
+      <nav class="main-nav">
+        <a href="/">← Back to Roller</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container legal-wrapper">
+    <div class="legal-card">
+      <h1>Privacy Policy</h1>
+      <div class="legal-meta">Last Updated: May 30, 2026</div>
+
+      <p>Welcome to DiceRollingApp ("we", "our", or "us"). We operate as a free virtual tool accessible at <a href="https://dicerollingapp.github.io/">https://dicerollingapp.github.io/</a>. Your privacy is critically important to us, which is why our platform is intentionally engineered to protect your information while you generate random results.</p>
+
+      <h2>1. Information We Do Not Collect</h2>
+      <p>DiceRollingApp values a completely frictionless experience. Because of this architectural model:</p>
+      <ul>
+        <li>We do not require user accounts, email registration, or logins to access our rolling features.</li>
+        <li>We do not collect, process, or store private personal information such as your name, billing details, physical location, or contact metrics.</li>
+      2. Truly Local Application Execution</h2>
+      <p>All algorithm computation for your D4, D6, D8, D10, D12, D20, D100, or custom dice generation executes locally on your device via JavaScript. Your configuration settings, temporary roll sequences, and modifiers are parsed strictly inside your own web browser runtime and are not transmitted back to external servers.</p>
+
+      <h2>3. Log Files & Analytics</h2>
+      <p>Like standard web structures, our hosting systems may register diagnostic technical requests (such as masked Internet Protocol addresses, browser layout engines, timestamp signatures, or referencing pages). This system interaction telemetry maps anonymous parameters exclusively to ensure global uptime, optimize performance, and monitor system health.</p>
+
+      <h2>4. Third-Party Advertisements & Cookies</h2>
+      <p>To keep this application completely free without disrupting gameplay, we may serve advertisements or integrate diagnostic platforms. These third-party vendors use technical tracking modules like cookies or web beacons to identify programmatic configurations. These entities handle tracking metrics under their own distinct data security frameworks.</p>
+
+      <h2>5. External Resource Routing</h2>
+      <p>Our infrastructure contains links directing out to external targets. If you follow a reference asset outside our domain space, please note that we do not exercise administrative governance over external tracking. Review the explicit terms posted on those independent domains.</p>
+
+      <h2>6. Compliance and Framework Updates</h2>
+      <p>We preserve systemic optimization updates as technical modifications evolve. Any architectural amendments manifest immediately here on this public index. Your continuous connection to this site confirms acceptance of our data security structure.</p>
+
+      <h2>7. Contact Information</h2>
+      <p>If you have any questions or administrative inquiries regarding this documentation framework, you can reach us by filing a technical query through our public GitHub repository infrastructure tracking system.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DiceRollingApp. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
