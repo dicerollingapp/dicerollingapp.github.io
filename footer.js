@@ -6,7 +6,7 @@
     <div class="footer-glow"></div>
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="https://dicerollingapp.github.io" class="footer-logo" aria-label="Dice Rolling App">
+        <a href="/" class="footer-logo" aria-label="Dice Rolling App">
           <span class="logo-icon">🎲</span>
           <span class="logo-text">DiceRoll<span class="logo-accent">App</span></span>
         </a>
@@ -19,23 +19,23 @@
         <div class="footer-col">
           <h4>Dice Rollers</h4>
           <ul>
-            <li><a href="#roller">Roll D6 Online</a></li>
-            <li><a href="#dice-types">D4 Dice Roller</a></li>
-            <li><a href="#dice-types">D8 Dice Roller</a></li>
-            <li><a href="#dice-types">D10 Dice Roller</a></li>
-            <li><a href="#dice-types">D12 Dice Roller</a></li>
-            <li><a href="#dice-types">D20 Dice Roller</a></li>
-            <li><a href="#dice-types">D100 Dice Roller</a></li>
+            <li><a href="/#roller">Roll D6 Online</a></li>
+            <li><a href="/#dice-types">D4 Dice Roller</a></li>
+            <li><a href="/#dice-types">D8 Dice Roller</a></li>
+            <li><a href="/#dice-types">D10 Dice Roller</a></li>
+            <li><a href="/#dice-types">D12 Dice Roller</a></li>
+            <li><a href="/#dice-types">D20 Dice Roller</a></li>
+            <li><a href="/#dice-types">D100 Dice Roller</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Features</h4>
           <ul>
-            <li><a href="#multi-roll">Multi Dice Roll</a></li>
-            <li><a href="#history">Roll History</a></li>
-            <li><a href="#games">Dice Games</a></li>
-            <li><a href="#roller">Random Dice Roller</a></li>
-            <li><a href="#multi-roll">Virtual Dice Roller</a></li>
+            <li><a href="/#multi-roll">Multi Dice Roll</a></li>
+            <li><a href="/#history">Roll History</a></li>
+            <li><a href="/#games">Dice Games</a></li>
+            <li><a href="/#roller">Random Dice Roller</a></li>
+            <li><a href="/#multi-roll">Virtual Dice Roller</a></li>
           </ul>
         </div>
         <div class="footer-col">
