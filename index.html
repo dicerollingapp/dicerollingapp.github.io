@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dice Roll Online – Free Virtual Dice Roller | DiceRollingApp</title>
+  <meta name="description" content="Roll dice online for free! Our virtual dice roller supports D4, D6, D8, D10, D12, D20, D100 and more. Perfect for board games, RPGs, and random decisions. No download needed." />
+  <meta name="keywords" content="dice roll, online dice, online dice roller, virtual dice, virtual dice roller, dice rolling app, roll dice online, 6 sided dice, random dice roller, dice game roll, dice roll free, dice roll random" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://dicerollingapp.github.io/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dice Roll Online – Free Virtual Dice Roller" />
+  <meta property="og:description" content="Roll any dice online for free. D4 to D100 virtual dice, multi-roll, history, and more. The best online dice roller for all your games." />
+  <meta property="og:url" content="https://dicerollingapp.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://dicerollingapp.github.io/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dice Roll Online – Free Virtual Dice Roller" />
+  <meta name="twitter:description" content="Roll any dice online free. Best virtual dice roller for RPG, board games and more." />
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "DiceRollingApp",
+    "url": "https://dicerollingapp.github.io/",
+    "description": "Free online virtual dice roller supporting D4, D6, D8, D10, D12, D20, D100 and custom dice. Roll dice online for board games, RPGs, tabletop adventures and random decisions.",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "HTML5",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Virtual 6-sided dice roller",
+      "D4, D8, D10, D12, D20, D100 dice",
+      "Multi-dice rolling",
+      "Roll history tracker",
+      "Dice probability calculator",
+      "Custom sided dice"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I roll dice online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Simply click the dice or press the Roll button on DiceRollingApp. Choose your dice type (D4, D6, D8, D10, D12, D20, D100), set the number of dice, and click Roll. Results appear instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this virtual dice roller truly random?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! DiceRollingApp uses JavaScript's cryptographically-seeded Math.random() to generate truly random dice rolls, just like physical dice."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What types of dice can I roll online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can roll D4, D6, D8, D10, D12, D20, D100, and custom-sided dice. We also support multi-dice rolling and special combinations for games like Dungeons & Dragons."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the online dice roller free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, DiceRollingApp is 100% free to use. No registration, no download, no ads blocking your rolls."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --off-white: #f8f7ff;
+      --bg: #ffffff;
+      --text: #1a1040;
+      --text-muted: #6b5b95;
+      --accent1: #ff5e78;
+      --accent2: #ffaa00;
+      --accent3: #00c896;
+      --accent4: #5b8cff;
+      --accent5: #b96bff;
+      --dice-d4: #ff5e78;
+      --dice-d6: #ffaa00;
+      --dice-d8: #00c896;
+      --dice-d10: #5b8cff;
+      --dice-d12: #b96bff;
+      --dice-d20: #ff7c43;
+      --dice-d100: #e040fb;
+      --dice-custom: #26c6da;
+      --shadow-sm: 0 2px 10px rgba(91,140,255,0.12);
+      --shadow-md: 0 6px 30px rgba(91,140,255,0.18);
+      --shadow-lg: 0 16px 60px rgba(91,140,255,0.22);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --header-h: 70px;
+      --font-main: 'Nunito', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-main);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    h1, h2, h3, h4 { font-weight: 800; line-height: 1.25; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; }
+    ul { list-style: none; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      z-index: 1000;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s;
+    }
+    .site-header.scrolled {
+      border-bottom-color: rgba(91,140,255,0.18);
+      box-shadow: 0 4px 24px rgba(91,140,255,0.12);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--text);
+    }
+    .logo-icon { font-size: 1.8rem; animation: spin-logo 6s linear infinite; display: inline-block; }
+    @keyframes spin-logo {
+      0%,100%{transform:rotate(0deg)}
+      25%{transform:rotate(-10deg)}
+      75%{transform:rotate(10deg)}
+    }
+    .logo-accent { color: var(--accent1); }
+    .main-nav ul { display: flex; gap: 4px; align-items: center; }
+    .main-nav a {
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 50px;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .main-nav a:hover {
+      background: var(--accent4);
+      color: #fff;
+    }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 26px; height: 3px;
+      background: var(--text);
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
+    .nav-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--header-h);
+      background: linear-gradient(145deg, #fff 0%, #f0edff 45%, #fff5e6 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(91,140,255,0.12) 0%, transparent 70%);
+      top: -200px; right: -150px;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,94,120,0.1) 0%, transparent 70%);
+      bottom: -100px; left: -100px;
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(90deg, #ff5e78, #ffaa00);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--accent4); }
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.25s;
+      border: none;
+      font-family: var(--font-main);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent1), var(--accent5));
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(185,107,255,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(185,107,255,0.45); }
+    .btn-secondary {
+      background: #fff;
+      color: var(--text);
+      border: 2.5px solid var(--accent4);
+    }
+    .btn-secondary:hover { background: var(--accent4); color: #fff; }
+
+    /* Hero Dice Display */
+    .hero-dice-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-main-die {
+      font-size: 9rem;
+      line-height: 1;
+      filter: drop-shadow(0 12px 40px rgba(91,140,255,0.3));
+      animation: float-die 3s ease-in-out infinite;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.1s;
+    }
+    .hero-main-die.rolling { animation: roll-shake 0.5s ease-out; }
+    @keyframes float-die {
+      0%,100%{transform:translateY(0) rotate(-5deg)}
+      50%{transform:translateY(-16px) rotate(5deg)}
+    }
+    @keyframes roll-shake {
+      0%{transform:rotate(0) scale(1)}
+      20%{transform:rotate(-25deg) scale(1.15)}
+      40%{transform:rotate(25deg) scale(1.2)}
+      60%{transform:rotate(-15deg) scale(1.1)}
+      80%{transform:rotate(10deg) scale(1.05)}
+      100%{transform:rotate(0) scale(1)}
+    }
+    .hero-result {
+      font-size: 5rem;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      color: var(--accent4);
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .hero-result.pop { animation: pop-result 0.35s ease-out; }
+    @keyframes pop-result {
+      0%{transform:scale(0.5);opacity:0}
+      70%{transform:scale(1.2)}
+      100%{transform:scale(1);opacity:1}
+    }
+    .hero-dice-mini {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .mini-die-btn {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      border: 2.5px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #fff;
+    }
+    .mini-die-btn:hover { transform: scale(1.15); }
+    .mini-die-btn.active { transform: scale(1.15); box-shadow: 0 0 0 4px rgba(255,255,255,0.8), 0 4px 16px rgba(0,0,0,0.2); }
+
+    /* ===== SECTION BASE ===== */
+    section { padding: 90px 0; }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+    .centered { text-align: center; }
+    .centered .section-desc { margin-left: auto; margin-right: auto; }
+
+    /* ===== ROLLER SECTION ===== */
+    #roller { background: var(--white); }
+    .roller-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 40px;
+      align-items: start;
+    }
+    .roller-card {
+      background: linear-gradient(145deg, #f8f7ff, #fff);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      border: 2px solid rgba(91,140,255,0.1);
+    }
+    .roller-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .dice-type-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .dice-tab {
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      border: 2.5px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #f0edff;
+      color: var(--text-muted);
+    }
+    .dice-tab.active, .dice-tab:hover { color: #fff; }
+
+    .roller-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding: 40px 20px;
+    }
+    .big-die-wrap {
+      position: relative;
+      width: 160px; height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .big-die-glow {
+      position: absolute;
+      inset: -20px;
+      border-radius: 50%;
+      opacity: 0.3;
+      transition: all 0.3s;
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    @keyframes pulse-glow {
+      0%,100%{transform:scale(1);opacity:0.25}
+      50%{transform:scale(1.15);opacity:0.45}
+    }
+    .big-die-emoji {
+      font-size: 7rem;
+      line-height: 1;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.15s;
+    }
+    .big-die-emoji:active { transform: scale(0.9); }
+    .big-die-emoji.rolling { animation: roll-shake 0.55s ease-out; }
+
+    .dice-count-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .count-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 2.5px solid var(--accent4);
+      background: #fff;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--accent4);
+      transition: all 0.2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .count-btn:hover { background: var(--accent4); color: #fff; }
+    .count-display {
+      font-size: 1.5rem;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      min-width: 40px;
+      text-align: center;
+      color: var(--text);
+    }
+    .roll-btn-main {
+      width: 100%;
+      padding: 18px;
+      font-size: 1.1rem;
+      font-weight: 900;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-family: var(--font-main);
+      background: linear-gradient(135deg, var(--accent1), var(--accent5));
+      color: #fff;
+      letter-spacing: 0.04em;
+      box-shadow: 0 8px 24px rgba(185,107,255,0.3);
+      transition: all 0.25s;
+    }
+    .roll-btn-main:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(185,107,255,0.45); }
+    .roll-btn-main:active { transform: scale(0.97); }
+
+    .results-display {
+      margin-top: 20px;
+      min-height: 60px;
+    }
+    .results-dice-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .result-die {
+      width: 60px; height: 60px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      animation: pop-result 0.35s ease-out;
+    }
+    .result-total {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    .result-total strong {
+      font-size: 1.5rem;
+      color: var(--text);
+      font-family: var(--font-mono);
+    }
+
+    /* Modifier row */
+    .modifier-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .modifier-row label {
+      font-weight: 700;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .modifier-input {
+      width: 80px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 2px solid rgba(91,140,255,0.25);
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      text-align: center;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .modifier-input:focus { border-color: var(--accent4); }
+
+    /* Side panel */
+    .roller-side .roller-card { height: 100%; min-height: 400px; }
+    .quick-history { height: 100%; }
+    .quick-history h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .clear-history-btn {
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 50px;
+      background: rgba(255,94,120,0.1);
+      color: var(--accent1);
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-main);
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+    .clear-history-btn:hover { background: var(--accent1); color: #fff; }
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 480px;
+      overflow-y: auto;
+    }
+    .history-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      background: #fff;
+      border: 1.5px solid rgba(91,140,255,0.1);
+      animation: slide-in 0.3s ease-out;
+    }
+    @keyframes slide-in {
+      from { transform: translateX(20px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    .history-die-badge {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .history-info { flex: 1; min-width: 0; }
+    .history-result {
+      font-size: 1rem;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      color: var(--text);
+    }
+    .history-detail {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .history-time {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+    .history-empty {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* ===== DICE TYPES SECTION ===== */
+    #dice-types {
+      background: linear-gradient(180deg, #f8f7ff 0%, #fff5f0 100%);
+    }
+    .dice-types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .dice-type-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid transparent;
+      transition: all 0.3s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .dice-type-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .dice-type-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .dice-type-card:hover::before { opacity: 0.06; }
+    .dice-type-emoji { font-size: 3.5rem; margin-bottom: 16px; display: block; }
+    .dice-type-name {
+      font-size: 1.5rem;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      margin-bottom: 6px;
+    }
+    .dice-type-full { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 14px; font-weight: 700; }
+    .dice-type-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 18px; }
+    .dice-type-roll-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 22px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-family: var(--font-main);
+      transition: all 0.2s;
+    }
+    .dice-type-roll-btn:hover { transform: scale(1.05); }
+    .dice-type-result {
+      position: absolute;
+      top: 16px; right: 16px;
+      font-size: 1.8rem;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      opacity: 0;
+      transition: all 0.3s;
+    }
+    .dice-type-result.show { opacity: 1; animation: pop-result 0.35s ease-out; }
+
+    /* ===== MULTI ROLL SECTION ===== */
+    #multi-roll { background: #fff; }
+    .multi-roll-builder {
+      background: linear-gradient(145deg, #f8f7ff, #fff);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      border: 2px solid rgba(91,140,255,0.1);
+    }
+    .dice-formula {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .formula-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid rgba(91,140,255,0.15);
+      animation: pop-result 0.3s ease-out;
+    }
+    .formula-chip-remove {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--accent1);
+      font-size: 1rem;
+      line-height: 1;
+      padding: 0;
+    }
+    .formula-plus { font-size: 1.2rem; font-weight: 900; color: var(--text-muted); }
+    .dice-adder {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .add-dice-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      border: 2.5px solid transparent;
+      cursor: pointer;
+      font-family: var(--font-main);
+      font-weight: 800;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .add-dice-btn:hover { transform: scale(1.06); }
+    .add-dice-icon { font-size: 1.6rem; }
+    .multi-roll-result {
+      background: #fff;
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      border: 2px solid rgba(91,140,255,0.12);
+      min-height: 100px;
+    }
+    .multi-result-dice-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .multi-result-total {
+      font-size: 1.8rem;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      color: var(--text);
+    }
+    .multi-result-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 700; }
+    .multi-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    /* ===== HISTORY SECTION ===== */
+    #history { background: linear-gradient(180deg, #f8f7ff 0%, #fff 100%); }
+    .history-full-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .history-full-item {
+      background: #fff;
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      border: 2px solid rgba(91,140,255,0.1);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.2s;
+    }
+    .history-full-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .history-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .stat-card {
+      background: #fff;
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      text-align: center;
+      border: 2px solid rgba(91,140,255,0.1);
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      color: var(--accent4);
+      display: block;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 700; }
+
+    /* ===== GAMES SECTION ===== */
+    #games { background: #fff; }
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .game-card {
+      background: linear-gradient(145deg, #f8f7ff, #fff);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      border: 2px solid rgba(91,140,255,0.1);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
+    }
+    .game-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .game-icon { font-size: 2.5rem; margin-bottom: 14px; display: block; }
+    .game-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 8px; }
+    .game-desc { font-size: 0.87rem; color: var(--text-muted); margin-bottom: 18px; line-height: 1.6; }
+    .game-dice-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+    .game-dice-tag {
+      font-size: 0.78rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      padding: 3px 12px;
+      border-radius: 50px;
+      color: #fff;
+    }
+    .play-game-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 0.87rem;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      background: var(--text);
+      color: #fff;
+      font-family: var(--font-main);
+      transition: all 0.2s;
+    }
+    .play-game-btn:hover { background: var(--accent4); }
+    .game-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(26,16,64,0.65);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .game-modal-overlay.open { opacity: 1; pointer-events: all; }
+    .game-modal {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(20px);
+      transition: transform 0.3s;
+    }
+    .game-modal-overlay.open .game-modal { transform: translateY(0); }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: #f0edff;
+      border: none;
+      border-radius: 50%;
+      width: 36px; height: 36px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--text);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    #how-it-works { background: linear-gradient(180deg, #fff5f0 0%, #f8f7ff 100%); }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+    }
+    .step-card {
+      text-align: center;
+      padding: 36px 24px;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 2px solid rgba(91,140,255,0.08);
+      position: relative;
+    }
+    .step-number {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      color: #fff;
+      margin: 0 auto 18px;
+    }
+    .step-icon { font-size: 2.2rem; margin-bottom: 14px; display: block; }
+    .step-title { font-size: 1.05rem; font-weight: 800; margin-bottom: 10px; }
+    .step-desc { font-size: 0.87rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ===== FEATURES ===== */
+    #features { background: #fff; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 2px solid rgba(91,140,255,0.1);
+      background: linear-gradient(145deg, #f8f7ff, #fff);
+      transition: all 0.3s;
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .feature-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    .feature-title { font-size: 1rem; font-weight: 800; margin-bottom: 8px; }
+    .feature-desc { font-size: 0.87rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ===== ABOUT ===== */
+    #about { background: linear-gradient(145deg, #f0edff 0%, #fff5f0 100%); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-content p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 18px;
+      line-height: 1.75;
+    }
+    .about-highlights { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+    .about-highlight {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .about-highlight-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .about-visual {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+    }
+    .about-dice-showcase {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .showcase-die {
+      aspect-ratio: 1;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #fff;
+    }
+    .showcase-die span {
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      opacity: 0.85;
+    }
+
+    /* ===== FAQ ===== */
+    #faq { background: #fff; }
+    .faq-list { max-width: 780px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 2px solid rgba(91,140,255,0.1);
+    }
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 22px 0;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text);
+      cursor: pointer;
+      font-family: var(--font-main);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .faq-q:hover { color: var(--accent4); }
+    .faq-chevron {
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--accent4); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 20px; }
+
+    /* ===== SEO TEXT SECTION ===== */
+    #seo-text { background: linear-gradient(180deg, #f8f7ff 0%, #fff 100%); }
+    .seo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+    .seo-block h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 12px; color: var(--text); }
+    .seo-block p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.85);
+      padding-top: 70px;
+      position: relative;
+      overflow: hidden;
+    }
+    .footer-glow {
+      position: absolute;
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(91,140,255,0.15) 0%, transparent 70%);
+      top: 0; left: 50%; transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 50px;
+      display: grid;
+      grid-template-columns: 1.5fr 2fr;
+      gap: 60px;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .footer-tagline { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.65; max-width: 320px; }
+    .footer-dice-row { display: flex; gap: 8px; margin-top: 20px; }
+    .fd { font-size: 1.6rem; opacity: 0.4; transition: opacity 0.2s; }
+    .fd:hover { opacity: 1; }
+    .footer-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .footer-col h4 {
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 24px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.35);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.55); }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ===== CONFETTI CANVAS ===== */
+    #confetti-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ===== TOAST ===== */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(60px);
+      background: var(--text);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      z-index: 5000;
+      transition: transform 0.35s;
+      box-shadow: var(--shadow-lg);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; padding: 60px 24px; }
+      .hero-cta { justify-content: center; }
+      .hero-desc { margin-left: auto; margin-right: auto; }
+      .hero-dice-display { margin-top: 20px; }
+      .roller-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+      .history-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .main-nav {
+        position: fixed;
+        top: var(--header-h);
+        left: 0; right: 0;
+        background: #fff;
+        padding: 20px 24px;
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-110%);
+        transition: transform 0.35s;
+        z-index: 999;
+      }
+      .main-nav.open { transform: translateY(0); }
+      .main-nav ul { flex-direction: column; gap: 4px; }
+      .main-nav a { padding: 12px 16px; display: block; border-radius: var(--radius-sm); }
+      .nav-toggle { display: flex; }
+      .footer-links { grid-template-columns: repeat(2, 1fr); }
+      .history-stats { grid-template-columns: repeat(2, 1fr); }
+      section { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+<div class="toast" id="toast"></div>
+
+<!-- Header injected by header.js -->
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-content reveal">
+      <div class="hero-badge">🎲 Free Online Dice Roller</div>
+      <h1>Roll Dice <span>Online</span> — Fast, Free & Virtual</h1>
+      <p class="hero-desc">The best virtual dice roller for every game. Roll any dice — D4, D6, D8, D10, D12, D20, D100 — instantly in your browser. No download, no registration required.</p>
+      <div class="hero-cta">
+        <a href="#roller" class="btn btn-primary">🎲 Roll Dice Now</a>
+        <a href="#dice-types" class="btn btn-secondary">Explore All Dice</a>
+      </div>
+    </div>
+    <div class="hero-dice-display reveal reveal-delay-2">
+      <div class="hero-main-die" id="hero-die" role="button" aria-label="Click to roll dice" tabindex="0">🎲</div>
+      <div class="hero-result" id="hero-result">?</div>
+      <div class="hero-dice-mini" id="hero-mini-dice">
+        <button class="mini-die-btn active" data-sides="6" style="background:#ffaa00" title="D6">D6</button>
+        <button class="mini-die-btn" data-sides="4" style="background:#ff5e78" title="D4">D4</button>
+        <button class="mini-die-btn" data-sides="8" style="background:#00c896" title="D8">D8</button>
+        <button class="mini-die-btn" data-sides="10" style="background:#5b8cff" title="D10">D10</button>
+        <button class="mini-die-btn" data-sides="12" style="background:#b96bff" title="D12">D12</button>
+        <button class="mini-die-btn" data-sides="20" style="background:#ff7c43" title="D20">D20</button>
+        <button class="mini-die-btn" data-sides="100" style="background:#e040fb" title="D100">D100</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAIN ROLLER ===== -->
+<section id="roller">
+  <div class="container">
+    <div class="centered" style="margin-bottom:48px">
+      <div class="section-label reveal" style="background:rgba(91,140,255,0.1);color:var(--accent4)">🎲 Online Dice Roller</div>
+      <h2 class="section-title reveal reveal-delay-1">Roll Any Dice Online — Free</h2>
+      <p class="section-desc reveal reveal-delay-2">Choose your dice type, set quantity and modifier, then hit Roll. Our virtual dice roller gives you instant random results.</p>
+    </div>
+    <div class="roller-grid">
+      <div class="roller-card reveal">
+        <div class="roller-top">
+          <div class="dice-type-tabs" id="roller-tabs" role="tablist" aria-label="Dice type selection">
+            <button class="dice-tab active" data-sides="4" style="--c:#ff5e78" role="tab">D4</button>
+            <button class="dice-tab" data-sides="6" style="--c:#ffaa00" role="tab">D6</button>
+            <button class="dice-tab" data-sides="8" style="--c:#00c896" role="tab">D8</button>
+            <button class="dice-tab" data-sides="10" style="--c:#5b8cff" role="tab">D10</button>
+            <button class="dice-tab" data-sides="12" style="--c:#b96bff" role="tab">D12</button>
+            <button class="dice-tab" data-sides="20" style="--c:#ff7c43" role="tab">D20</button>
+            <button class="dice-tab" data-sides="100" style="--c:#e040fb" role="tab">D100</button>
+            <button class="dice-tab" data-sides="custom" style="--c:#26c6da" role="tab">Custom</button>
+          </div>
+        </div>
+        <div id="custom-sides-row" style="display:none;margin-bottom:20px;display:none">
+          <label style="font-weight:700;color:var(--text-muted);font-size:.9rem;margin-right:10px">Sides:</label>
+          <input type="number" id="custom-sides-input" min="2" max="9999" value="6"
+            style="width:90px;padding:8px 14px;border-radius:10px;border:2px solid rgba(91,140,255,.25);font-family:var(--font-mono);font-size:1rem;font-weight:700;text-align:center;outline:none;color:var(--text)"
+            aria-label="Custom dice sides" />
+        </div>
+        <div class="roller-stage">
+          <div class="big-die-wrap">
+            <div class="big-die-glow" id="die-glow" style="background:radial-gradient(circle, #ffaa00, transparent)"></div>
+            <div class="big-die-emoji" id="big-die" role="button" tabindex="0" aria-label="Click to roll">🎲</div>
+          </div>
+          <div class="dice-count-row" aria-label="Number of dice">
+            <button class="count-btn" id="count-minus" aria-label="Decrease dice count">−</button>
+            <div class="count-display" id="count-display" aria-live="polite">1</div>
+            <button class="count-btn" id="count-plus" aria-label="Increase dice count">+</button>
+          </div>
+          <div class="modifier-row">
+            <label for="modifier-input">Modifier (+/−):</label>
+            <input type="number" id="modifier-input" class="modifier-input" value="0" aria-label="Roll modifier" />
+          </div>
+          <button class="roll-btn-main" id="main-roll-btn" aria-live="polite">🎲 Roll Dice</button>
+          <div class="results-display" id="results-display" aria-live="polite"></div>
+        </div>
+      </div>
+      <div class="roller-side">
+        <div class="roller-card">
+          <div class="quick-history">
+            <h3 id="history-heading">
+              Roll History
+              <button class="clear-history-btn" id="clear-quick-history" aria-label="Clear roll history">Clear</button>
+            </h3>
+            <div class="history-list" id="quick-history-list" role="log" aria-label="Roll history" aria-live="polite">
+              <div class="history-empty">Your rolls will appear here 🎲</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DICE TYPES ===== -->
+<section id="dice-types">
+  <div class="container">
+    <div class="centered" style="margin-bottom:48px">
+      <div class="section-label reveal" style="background:rgba(255,94,120,0.1);color:var(--accent1)">🎯 All Dice Types</div>
+      <h2 class="section-title reveal reveal-delay-1">Every Dice Type You Need</h2>
+      <p class="section-desc reveal reveal-delay-2">From classic 6-sided dice to exotic D100s — roll any dice type online, instantly. Tap a card to roll that die right now.</p>
+    </div>
+    <div class="dice-types-grid" id="dice-types-grid"></div>
+  </div>
+</section>
+
+<!-- ===== MULTI ROLL ===== -->
+<section id="multi-roll">
+  <div class="container">
+    <div class="centered" style="margin-bottom:48px">
+      <div class="section-label reveal" style="background:rgba(0,200,150,0.1);color:var(--accent3)">🎲🎲 Multi Dice Roller</div>
+      <h2 class="section-title reveal reveal-delay-1">Roll Multiple Dice at Once</h2>
+      <p class="section-desc reveal reveal-delay-2">Build your dice combination — add D6s, D20s, any mix — and roll them all together. Perfect for Dungeons & Dragons, Yahtzee, and more.</p>
+    </div>
+    <div class="multi-roll-builder reveal">
+      <div class="dice-adder" id="dice-adder" aria-label="Add dice to roll"></div>
+      <div style="margin-bottom:20px">
+        <strong style="font-size:.9rem;color:var(--text-muted);font-family:var(--font-mono)">YOUR DICE FORMULA:</strong>
+        <div class="dice-formula" id="dice-formula" style="margin-top:12px">
+          <span style="color:var(--text-muted);font-size:.9rem">Add dice above to build your formula…</span>
+        </div>
+      </div>
+      <button class="roll-btn-main" id="multi-roll-btn" style="max-width:340px" aria-live="polite">🎲 Roll All Dice</button>
+      <div class="multi-roll-result" id="multi-roll-result" style="margin-top:24px" aria-live="polite">
+        <div style="color:var(--text-muted);font-size:.9rem;text-align:center;padding:10px 0">Add dice above and click Roll All 🎲</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HISTORY ===== -->
+<section id="history">
+  <div class="container">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:36px">
+      <div>
+        <div class="section-label reveal" style="background:rgba(185,107,255,0.1);color:var(--accent5)">📊 Roll Statistics</div>
+        <h2 class="section-title reveal reveal-delay-1">Your Dice Roll History</h2>
+        <p class="section-desc reveal reveal-delay-2" style="margin-bottom:0">Track every roll, see your stats, and relive those epic natural 20s.</p>
+      </div>
+      <button class="btn btn-secondary" id="clear-full-history" style="margin-top:40px">🗑 Clear History</button>
+    </div>
+    <div class="history-stats" id="history-stats">
+      <div class="stat-card reveal"><span class="stat-value" id="stat-total-rolls">0</span><span class="stat-label">Total Rolls</span></div>
+      <div class="stat-card reveal reveal-delay-1"><span class="stat-value" id="stat-highest">—</span><span class="stat-label">Highest Roll</span></div>
+      <div class="stat-card reveal reveal-delay-2"><span class="stat-value" id="stat-average">—</span><span class="stat-label">Average Roll</span></div>
+      <div class="stat-card reveal reveal-delay-3"><span class="stat-value" id="stat-fav-die">—</span><span class="stat-label">Favourite Die</span></div>
+    </div>
+    <div class="history-full-list" id="history-full-list" aria-live="polite" aria-label="Full roll history">
+      <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">No rolls yet — start rolling above! 🎲</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section id="how-it-works">
+  <div class="container">
+    <div class="centered" style="margin-bottom:48px">
+      <div class="section-label reveal" style="background:rgba(255,170,0,0.12);color:var(--accent2)">⚙️ How It Works</div>
+      <h2 class="section-title reveal reveal-delay-1">How to Roll Dice Online</h2>
+      <p class="section-desc reveal reveal-delay-2">Rolling dice online has never been easier. Here's how our virtual dice roller works.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-number" style="background:var(--accent1)">1</div>
+        <span class="step-icon">🎯</span>
+        <h3 class="step-title">Choose Your Dice</h3>
+        <p class="step-desc">Select from D4, D6, D8, D10, D12, D20, D100, or enter a custom number of sides for any imaginable die.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-number" style="background:var(--accent4)">2</div>
+        <span class="step-icon">🔢</span>
+        <h3 class="step-title">Set Quantity & Modifier</h3>
+        <p class="step-desc">Choose how many dice to roll at once and add a bonus or penalty modifier to your total roll result.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-number" style="background:var(--accent3)">3</div>
+        <span class="step-icon">🎲</span>
+        <h3 class="step-title">Roll the Dice</h3>
+        <p class="step-desc">Click the Roll button or tap the die. Our random dice generator produces a truly random, fair result instantly.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-number" style="background:var(--accent5)">4</div>
+        <span class="step-icon">📊</span>
+        <h3 class="step-title">See Results & History</h3>
+        <p class="step-desc">View your result immediately, complete with individual die values and total. All rolls are saved in your session history.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GAMES ===== -->
+<section id="games">
+  <div class="container">
+    <div class="centered" style="margin-bottom:48px">
+      <div class="section-label reveal" style="background:rgba(91,140,255,0.1);color:var(--accent4)">🎮 Dice Games</div>
+      <h2 class="section-title reveal reveal-delay-1">Popular Dice Games</h2>
+      <p class="section-desc reveal reveal-delay-2">Use our virtual dice roller for your favourite tabletop and board games. Here are the dice each game uses.</p>
+    </div>
+    <div class="games-grid" id="games-grid"></div>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section id="features">
+  <div class="container">
+    <div class="centered" style="margin-bottom:48px">
+      <div class="section-label reveal" style="background:rgba(0,200,150,0.1);color:var(--accent3)">✨ Features</div>
+      <h2 class="section-title reveal reveal-delay-1">Why Use DiceRollingApp?</h2>
+      <p class="section-desc reveal reveal-delay-2">The most complete free online dice roller. Packed with features for gamers, educators, and anyone who needs a random dice roll.</p>
+    </div>
+    <div class="features-grid" id="features-grid"></div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-content reveal">
+        <div class="section-label" style="background:rgba(185,107,255,0.1);color:var(--accent5)">🎲 About DiceRollingApp</div>
+        <h2 class="section-title" style="margin-top:12px">The Free Online Dice Roller Built for Everyone</h2>
+        <p>DiceRollingApp is a 100% free, browser-based virtual dice roller designed for board game fans, tabletop RPG players, teachers, and anyone who needs to roll dice online — without downloading anything.</p>
+        <p>Our random dice roller uses a high-quality random number generator to ensure every dice roll is as fair as a physical die. Whether you're rolling a 6-sided die for Monopoly or a D20 for your Dungeons & Dragons campaign, we've got you covered.</p>
+        <p>Rolling the dice should be fun and frictionless. That's why DiceRollingApp loads instantly on any device — desktop, tablet, or mobile — and remembers your session history so you never lose track of your rolls.</p>
+        <div class="about-highlights">
+          <div class="about-highlight">
+            <div class="about-highlight-icon" style="background:rgba(91,140,255,0.15)">🔒</div>
+            <span>100% free — no sign-up, no ads blocking gameplay</span>
+          </div>
+          <div class="about-highlight">
+            <div class="about-highlight-icon" style="background:rgba(0,200,150,0.15)">📱</div>
+            <span>Works on every device — mobile, tablet, desktop</span>
+          </div>
+          <div class="about-highlight">
+            <div class="about-highlight-icon" style="background:rgba(255,94,120,0.15)">⚡</div>
+            <span>Instant rolls — no loading, no waiting</span>
+          </div>
+          <div class="about-highlight">
+            <div class="about-highlight-icon" style="background:rgba(185,107,255,0.15)">🎯</div>
+            <span>Truly random — cryptographic-quality randomness</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal reveal-delay-2">
+        <h3 style="font-size:1rem;font-weight:800;color:var(--text-muted);margin-bottom:20px;text-transform:uppercase;letter-spacing:.08em">All Supported Dice</h3>
+        <div class="about-dice-showcase" id="about-dice-showcase"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEO TEXT ===== -->
+<section id="seo-text">
+  <div class="container">
+    <div class="centered" style="margin-bottom:48px">
+      <div class="section-label reveal" style="background:rgba(255,170,0,0.12);color:var(--accent2)">📖 Learn More</div>
+      <h2 class="section-title reveal reveal-delay-1">Everything About Online Dice Rolling</h2>
+      <p class="section-desc reveal reveal-delay-2">Your complete guide to virtual dice, digital dice rollers, and online dice games.</p>
+    </div>
+    <div class="seo-grid">
+      <div class="seo-block reveal">
+        <h3>What is an Online Dice Roller?</h3>
+        <p>An online dice roller is a digital tool that simulates the random roll of physical dice. Also called a virtual dice roller, dice rolling app, or random dice roller, it allows you to roll dice online for free without needing physical dice. Our dice roller virtual tool supports all standard polyhedral dice used in tabletop games.</p>
+      </div>
+      <div class="seo-block reveal reveal-delay-1">
+        <h3>How Does Virtual Dice Work?</h3>
+        <p>Virtual dice use a random number generator (RNG) to produce results equivalent to a physical dice roll. When you roll dice online, the algorithm generates a random integer between 1 and the number of sides — just like rolling the dice in real life. Our online dice roller is designed to be as fair and unpredictable as physical dice.</p>
+      </div>
+      <div class="seo-block reveal reveal-delay-2">
+        <h3>What is a 6-Sided Dice?</h3>
+        <p>A 6-sided dice (also called a D6) is the most common type of die, used in games like Monopoly, Yahtzee, Backgammon, and Ludo. When you roll a 6-sided die, the result is a random number between 1 and 6. Our online dice roller lets you roll D6 dice — one at a time or in multiples — instantly for free.</p>
+      </div>
+      <div class="seo-block reveal reveal-delay-3">
+        <h3>Why Use a Dice Rolling App?</h3>
+        <p>A dice rolling app is perfect when you don't have physical dice nearby, when playing games online with friends, or when you need to roll many dice quickly. Our dice game roll tool is free, fast, and works on any device. Whether you're rolling the dice for a board game, RPG, or a fun decision, our virtual dice roller delivers instant results.</p>
+      </div>
+      <div class="seo-block reveal">
+        <h3>Free Dice Roll — Anytime, Anywhere</h3>
+        <p>Need a quick, free dice roll? DiceRollingApp.github.io is your go-to free dice roller. Roll the dice for free — no download, no account, no cost ever. Simply open the page, choose your dice type, and roll. It's the simplest, fastest way to get a dice roll random result.</p>
+      </div>
+      <div class="seo-block reveal reveal-delay-1">
+        <h3>Dice Roll Random Number Generator</h3>
+        <p>Our dice roll random number generator ensures statistically unbiased results, simulating the physical randomness of rolling the dice. Each online dice roll is independent — the result is never influenced by previous rolls. This makes our virtual dice perfect for any game that depends on fair, dice roll random outcomes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="container">
+    <div class="centered" style="margin-bottom:48px">
+      <div class="section-label reveal" style="background:rgba(91,140,255,0.1);color:var(--accent4)">❓ FAQ</div>
+      <h2 class="section-title reveal reveal-delay-1">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list reveal" id="faq-list"></div>
+  </div>
+</section>
+
+<!-- Footer injected by footer.js -->
+
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script>
+// ===== DATA =====
+const DICE_CONFIG = [
+  { sides:4,  emoji:'🔺', label:'D4',   color:'#ff5e78', full:'4-Sided Die',   desc:'Used in D&D for small weapons like daggers. Gives results 1–4.',  uses:'Daggers, small damage rolls' },
+  { sides:6,  emoji:'🎲', label:'D6',   color:'#ffaa00', full:'6-Sided Die',   desc:'The classic die found in almost every board game. Results 1–6.',  uses:'Board games, Yahtzee, Monopoly' },
+  { sides:8,  emoji:'🔷', label:'D8',   color:'#00c896', full:'8-Sided Die',   desc:'Octahedral die used for longswords and healing in RPGs. Results 1–8.', uses:'RPG damage, random charts' },
+  { sides:10, emoji:'💎', label:'D10',  color:'#5b8cff', full:'10-Sided Die',  desc:'Used for percentile rolls and powerful weapons. Results 0–9.',    uses:'Percentile rolls, World of Darkness' },
+  { sides:12, emoji:'🔶', label:'D12',  color:'#b96bff', full:'12-Sided Die',  desc:'Dodecahedral die for greataxes and bardic inspiration. Results 1–12.', uses:'Greataxe damage, D&D bard' },
+  { sides:20, emoji:'⭐', label:'D20',  color:'#ff7c43', full:'20-Sided Die',  desc:'The iconic RPG die. Roll high for success! Results 1–20.',        uses:'D&D skill checks, attack rolls' },
+  { sides:100,emoji:'🌐', label:'D100', color:'#e040fb', full:'100-Sided Die', desc:'Percentile die (d%). Roll two D10s for 1–100 results.',            uses:'Percentile tables, random events' },
+  { sides:2,  emoji:'🪙', label:'D2',   color:'#26c6da', full:'Coin Flip',     desc:'Heads or tails! A simple coin-flip die. Results 1 or 2.',          uses:'Coin flip, 50/50 decisions' },
+];
+const GAMES_DATA = [
+  { icon:'🐉', title:'Dungeons & Dragons', desc:'The legendary tabletop RPG. Roll for attacks, skills, saving throws, and epic damage across your adventure.', dice:['D4','D6','D8','D10','D12','D20'], color:'#ff7c43' },
+  { icon:'🎯', title:'Yahtzee', desc:'Roll five D6 dice and try to score combinations. A classic family dice game that never gets old.', dice:['D6','D6','D6','D6','D6'], color:'#ffaa00' },
+  { icon:'🏠', title:'Monopoly', desc:'Roll two D6 dice to move around the board, buy properties, and bankrupt your friends.', dice:['D6','D6'], color:'#00c896' },
+  { icon:'🎲', title:'Backgammon', desc:'Use two D6 dice to race your pieces around the board in this ancient strategy game.', dice:['D6','D6'], color:'#5b8cff' },
+  { icon:'🎭', title:'Pathfinder', desc:'The detailed RPG system. Uses the full polyhedral dice set — D4 through D20 — for combat and skills.', dice:['D4','D8','D12','D20'], color:'#b96bff' },
+  { icon:'🌑', title:"World of Darkness", desc:'Roll pools of D10 dice, counting successes against a difficulty number in this dramatic horror RPG.', dice:['D10','D10','D10'], color:'#e040fb' },
+  { icon:'🎪', title:'Ludo / Parcheesi', desc:'The beloved family game — roll a single D6 and race your pieces around the board to home.', dice:['D6'], color:'#ff5e78' },
+  { icon:'🏰', title:'Settlers of Catan', desc:'Roll two D6 dice each turn to generate resources for all players based on the board layout.', dice:['D6','D6'], color:'#26c6da' },
+];
+const FEATURES_DATA = [
+  { icon:'🎲', bg:'rgba(91,140,255,0.1)', title:'8 Dice Types', desc:'D2, D4, D6, D8, D10, D12, D20, D100 and custom — every dice type at your fingertips.' },
+  { icon:'🎯', bg:'rgba(255,94,120,0.1)', title:'Multi-Dice Rolls', desc:'Build complex dice formulas like "3D6 + 2D4 + D20" and roll them all together.' },
+  { icon:'📊', bg:'rgba(0,200,150,0.1)', title:'Roll History & Stats', desc:'Every roll is saved in your session. See total rolls, highest roll, and your average.' },
+  { icon:'➕', bg:'rgba(255,170,0,0.12)', title:'Modifier Support', desc:'Add positive or negative modifiers to your rolls for RPG bonuses and penalties.' },
+  { icon:'⚡', bg:'rgba(185,107,255,0.1)', title:'Lightning Fast', desc:'Zero loading time. Click and get your random dice result instantly, every time.' },
+  { icon:'📱', bg:'rgba(38,198,218,0.12)', title:'Mobile Optimized', desc:'Fully responsive — roll dice on your phone, tablet, or desktop with ease.' },
+  { icon:'🔒', bg:'rgba(91,140,255,0.1)', title:'100% Free Forever', desc:'No ads blocking your game, no registration, no premium tiers. Just free dice rolls.' },
+  { icon:'🎮', bg:'rgba(255,124,67,0.1)', title:'Game Presets', desc:'One-click presets for D&D, Yahtzee, Monopoly, and more popular dice games.' },
+];
+const FAQ_DATA = [
+  { q:'How do I roll dice online?', a:'Simply choose your dice type (D4, D6, D8, D10, D12, D20, or D100), set how many dice you want to roll, add any modifier, and click the Roll Dice button. Your random result appears instantly.' },
+  { q:'Is this virtual dice roller really free?', a:'Yes — DiceRollingApp is 100% free to use, forever. There are no hidden costs, no premium features locked behind a paywall, and no registration required.' },
+  { q:'Is the online dice roller truly random?', a:"Yes! We use JavaScript's high-quality random number generator to simulate real dice physics. Every roll is statistically independent and fair — just like rolling physical dice." },
+  { q:'Can I roll multiple dice at once?', a:'Absolutely! Use the count selector in the main roller to roll 1–20 dice of the same type at once, or use our Multi Dice Roller section to combine different dice types like "2D6 + D20".' },
+  { q:'What is a D20 and when do I use it?', a:'A D20 is a 20-sided die — the most iconic die in tabletop RPGs like Dungeons & Dragons. You roll it for attack rolls, skill checks, and saving throws. A result of 20 is a "Natural 20" — a critical success!' },
+  { q:'Can I use this as a random number generator?', a:'Yes! Any dice roll is essentially a random number generator within a range. Roll a D6 for 1–6, a D100 for 1–100, or use our custom dice to generate a random number between 1 and any number you choose.' },
+  { q:'Does it work on mobile?', a:'Perfectly. DiceRollingApp is fully mobile-responsive and works on all smartphones and tablets. Roll dice online on iOS, Android, or any other mobile browser.' },
+  { q:'What dice does Dungeons & Dragons use?', a:"D&D uses the full polyhedral set: D4, D6, D8, D10, D12, and D20. The D100 (two D10s) is used for percentile rolls. Our online dice roller supports all of these, plus custom-sided dice." },
+];
+
+// ===== STATE =====
+let rollHistory = JSON.parse(sessionStorage.getItem('dra_history') || '[]');
+let currentSides = 6;
+let diceCount = 1;
+let multiFormula = [];
+
+// ===== UTILITIES =====
+function randInt(sides) { return Math.floor(Math.random() * sides) + 1; }
+function getDiceColor(sides) {
+  const map = {4:'#ff5e78',6:'#ffaa00',8:'#00c896',10:'#5b8cff',12:'#b96bff',20:'#ff7c43',100:'#e040fb',2:'#26c6da'};
+  return map[sides] || '#5b8cff';
+}
+function getDiceEmoji(sides) {
+  const map = {4:'🔺',6:'🎲',8:'🔷',10:'💎',12:'🔶',20:'⭐',100:'🌐',2:'🪙'};
+  return map[sides] || '🎲';
+}
+function saveHistory() { sessionStorage.setItem('dra_history', JSON.stringify(rollHistory)); }
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ===== CONFETTI =====
+const confCanvas = document.getElementById('confetti-canvas');
+const confCtx = confCanvas.getContext('2d');
+confCanvas.width = window.innerWidth;
+confCanvas.height = window.innerHeight;
+window.addEventListener('resize', () => { confCanvas.width = window.innerWidth; confCanvas.height = window.innerHeight; });
+let confettiPieces = [];
+function launchConfetti() {
+  for (let i = 0; i < 90; i++) {
+    confettiPieces.push({
+      x: Math.random() * confCanvas.width,
+      y: Math.random() * confCanvas.height * 0.3,
+      w: Math.random() * 10 + 5,
+      h: Math.random() * 6 + 4,
+      color: ['#ff5e78','#ffaa00','#00c896','#5b8cff','#b96bff','#ff7c43','#e040fb','#26c6da'][Math.floor(Math.random()*8)],
+      vx: (Math.random() - 0.5) * 4,
+      vy: Math.random() * 4 + 2,
+      rot: Math.random() * 360,
+      vrot: (Math.random() - 0.5) * 8,
+      alpha: 1,
+    });
+  }
+  animateConfetti();
+}
+function animateConfetti() {
+  confCtx.clearRect(0,0,confCanvas.width,confCanvas.height);
+  confettiPieces.forEach(p => {
+    p.x += p.vx; p.y += p.vy; p.rot += p.vrot; p.alpha -= 0.012;
+    confCtx.save();
+    confCtx.globalAlpha = Math.max(0, p.alpha);
+    confCtx.translate(p.x, p.y); confCtx.rotate(p.rot * Math.PI/180);
+    confCtx.fillStyle = p.color;
+    confCtx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+    confCtx.restore();
+  });
+  confettiPieces = confettiPieces.filter(p => p.alpha > 0);
+  if (confettiPieces.length) requestAnimationFrame(animateConfetti);
+}
+
+// ===== ROLL CORE =====
+function rollDice(sides, count, modifier) {
+  modifier = modifier || 0;
+  const rolls = Array.from({length: count}, () => randInt(sides));
+  const total = rolls.reduce((a,b) => a+b, 0) + modifier;
+  const entry = { sides, count, rolls, modifier, total, ts: Date.now() };
+  rollHistory.unshift(entry);
+  if (rollHistory.length > 200) rollHistory.pop();
+  saveHistory();
+  updateHistoryDisplay();
+  updateStatsDisplay();
+  if (sides === 20 && count === 1 && rolls[0] === 20) { launchConfetti(); showToast('🎉 Natural 20! Critical Hit!'); }
+  if (sides === 6 && count > 3 && rolls.every(r => r === 6)) { launchConfetti(); showToast('🎯 All sixes! Incredible!'); }
+  return entry;
+}
+
+// ===== HERO ROLLER =====
+let heroSides = 6;
+document.querySelectorAll('#hero-mini-dice .mini-die-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#hero-mini-dice .mini-die-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    heroSides = parseInt(btn.dataset.sides);
+    rollHero();
+  });
+});
+const heroDie = document.getElementById('hero-die');
+const heroResult = document.getElementById('hero-result');
+function rollHero() {
+  heroDie.classList.remove('rolling');
+  void heroDie.offsetWidth;
+  heroDie.classList.add('rolling');
+  heroResult.classList.remove('pop');
+  setTimeout(() => {
+    const result = randInt(heroSides);
+    heroDie.textContent = getDiceEmoji(heroSides);
+    heroResult.textContent = result;
+    heroResult.style.color = getDiceColor(heroSides);
+    heroResult.classList.add('pop');
+    heroDie.classList.remove('rolling');
+    rollDice(heroSides, 1, 0);
+  }, 400);
+}
+heroDie.addEventListener('click', rollHero);
+heroDie.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') rollHero(); });
+
+// ===== MAIN ROLLER =====
+const rollerTabs = document.getElementById('roller-tabs');
+const bigDie = document.getElementById('big-die');
+const dieGlow = document.getElementById('die-glow');
+const countDisplay = document.getElementById('count-display');
+const customRow = document.getElementById('custom-sides-row');
+const customInput = document.getElementById('custom-sides-input');
+const modInput = document.getElementById('modifier-input');
+const resultsDisplay = document.getElementById('results-display');
+
+function setActiveTab(sides) {
+  currentSides = sides;
+  const c = getDiceColor(typeof sides === 'string' ? 6 : sides);
+  rollerTabs.querySelectorAll('.dice-tab').forEach(t => {
+    const isActive = t.dataset.sides == sides.toString();
+    t.classList.toggle('active', isActive);
+    if (isActive) t.style.background = c;
+    else t.style.background = '#f0edff';
+    t.style.color = isActive ? '#fff' : '';
+  });
+  bigDie.textContent = sides === 'custom' ? '🎲' : getDiceEmoji(sides);
+  dieGlow.style.background = `radial-gradient(circle, ${c}, transparent)`;
+  customRow.style.display = sides === 'custom' ? 'flex' : 'none';
+}
+rollerTabs.addEventListener('click', e => {
+  const btn = e.target.closest('.dice-tab');
+  if (!btn) return;
+  const s = btn.dataset.sides;
+  setActiveTab(s === 'custom' ? 'custom' : parseInt(s));
+});
+document.getElementById('count-minus').addEventListener('click', () => {
+  if (diceCount > 1) { diceCount--; countDisplay.textContent = diceCount; }
+});
+document.getElementById('count-plus').addEventListener('click', () => {
+  if (diceCount < 20) { diceCount++; countDisplay.textContent = diceCount; }
+});
+function performMainRoll() {
+  const sides = currentSides === 'custom' ? (parseInt(customInput.value) || 6) : currentSides;
+  const mod = parseInt(modInput.value) || 0;
+  bigDie.classList.remove('rolling');
+  void bigDie.offsetWidth;
+  bigDie.classList.add('rolling');
+  resultsDisplay.innerHTML = '<div style="text-align:center;color:var(--text-muted);font-size:.9rem">Rolling…</div>';
+  setTimeout(() => {
+    bigDie.classList.remove('rolling');
+    const entry = rollDice(sides, diceCount, mod);
+    renderMainResult(entry);
+  }, 500);
+}
+function renderMainResult(entry) {
+  const color = getDiceColor(entry.sides);
+  const diceHTML = entry.rolls.map(r => `<div class="result-die" style="background:${color}">${r}</div>`).join('');
+  const modStr = entry.modifier > 0 ? ` + ${entry.modifier}` : entry.modifier < 0 ? ` − ${Math.abs(entry.modifier)}` : '';
+  resultsDisplay.innerHTML = `
+    <div class="results-dice-row">${diceHTML}</div>
+    <div class="result-total">Total: <strong>${entry.total}</strong>${modStr ? `<span style="font-size:.8rem;color:var(--text-muted);margin-left:6px">(${modStr})</span>` : ''}</div>`;
+}
+document.getElementById('main-roll-btn').addEventListener('click', performMainRoll);
+bigDie.addEventListener('click', performMainRoll);
+bigDie.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') performMainRoll(); });
+setActiveTab(6);
+
+// ===== DICE TYPES GRID =====
+const dtGrid = document.getElementById('dice-types-grid');
+DICE_CONFIG.forEach(d => {
+  const card = document.createElement('div');
+  card.className = 'dice-type-card reveal';
+  card.innerHTML = `
+    <span class="dice-type-result" id="dtr-${d.sides}"></span>
+    <span class="dice-type-emoji">${d.emoji}</span>
+    <div class="dice-type-name" style="color:${d.color}">${d.label}</div>
+    <div class="dice-type-full">${d.full}</div>
+    <div class="dice-type-desc">${d.desc}</div>
+    <div style="font-size:.78rem;color:${d.color};font-weight:700;margin-bottom:14px">Uses: ${d.uses}</div>
+    <button class="dice-type-roll-btn" style="background:${d.color}">🎲 Roll ${d.label}</button>`;
+  card.querySelector('button').addEventListener('click', (e) => {
+    e.stopPropagation();
+    const result = randInt(d.sides);
+    rollDice(d.sides, 1, 0);
+    const el = document.getElementById(`dtr-${d.sides}`);
+    el.textContent = result;
+    el.style.color = d.color;
+    el.classList.remove('show');
+    void el.offsetWidth;
+    el.classList.add('show');
+  });
+  card.style.borderColor = d.color + '33';
+  card.style.setProperty('--card-color', d.color);
+  card.querySelector('.big-die-glow') && (card.querySelector('.big-die-glow').style.background = `radial-gradient(circle,${d.color},transparent)`);
+  dtGrid.appendChild(card);
+});
+
+// ===== MULTI ROLLER =====
+const diceAdder = document.getElementById('dice-adder');
+const diceFormula = document.getElementById('dice-formula');
+const multiRollResult = document.getElementById('multi-roll-result');
+
+DICE_CONFIG.filter(d => d.sides !== 2).forEach(d => {
+  const btn = document.createElement('button');
+  btn.className = 'add-dice-btn';
+  btn.style.cssText = `background:${d.color}22;border-color:${d.color}55;color:${d.color}`;
+  btn.innerHTML = `<span class="add-dice-icon">${d.emoji}</span>${d.label}`;
+  btn.title = `Add ${d.label}`;
+  btn.addEventListener('click', () => {
+    multiFormula.push({ sides: d.sides, emoji: d.emoji, color: d.color, label: d.label });
+    renderFormula();
+  });
+  diceAdder.appendChild(btn);
+});
+
+function renderFormula() {
+  diceFormula.innerHTML = '';
+  if (!multiFormula.length) {
+    diceFormula.innerHTML = '<span style="color:var(--text-muted);font-size:.9rem">Add dice above to build your formula…</span>';
+    return;
+  }
+  const grouped = {};
+  multiFormula.forEach((d, i) => {
+    const k = d.sides;
+    if (!grouped[k]) grouped[k] = { ...d, count: 0, indices: [] };
+    grouped[k].count++;
+    grouped[k].indices.push(i);
+  });
+  Object.values(grouped).forEach((g, idx) => {
+    if (idx > 0) { const plus = document.createElement('span'); plus.className='formula-plus'; plus.textContent='+'; diceFormula.appendChild(plus); }
+    const chip = document.createElement('div');
+    chip.className = 'formula-chip';
+    chip.style.borderColor = g.color + '55';
+    chip.innerHTML = `<span style="color:${g.color}">${g.emoji}</span><span>${g.count > 1 ? g.count : ''}${g.label}</span>
+      <button class="formula-chip-remove" title="Remove one ${g.label}" data-sides="${g.sides}">×</button>`;
+    chip.querySelector('.formula-chip-remove').addEventListener('click', () => {
+      const idx = multiFormula.findLastIndex(d => d.sides === g.sides);
+      if (idx !== -1) { multiFormula.splice(idx, 1); renderFormula(); }
+    });
+    diceFormula.appendChild(chip);
+  });
+}
+
+document.getElementById('multi-roll-btn').addEventListener('click', () => {
+  if (!multiFormula.length) { showToast('Add some dice first!'); return; }
+  const results = multiFormula.map(d => ({ sides: d.sides, val: randInt(d.sides), color: d.color, label: d.label }));
+  const total = results.reduce((a,b) => a+b.val, 0);
+  const diceRow = results.map(r => `<div class="result-die" style="background:${r.color}">${r.val}</div>`).join('');
+  multiRollResult.innerHTML = `
+    <div class="multi-result-dice-row">${diceRow}</div>
+    <div class="multi-result-label">Total</div>
+    <div class="multi-result-total">${total}</div>`;
+  multiFormula.forEach(d => rollDice(d.sides, 1, 0));
+  updateHistoryDisplay();
+  updateStatsDisplay();
+});
+
+// ===== HISTORY =====
+function updateHistoryDisplay() {
+  const list = document.getElementById('quick-history-list');
+  if (!rollHistory.length) { list.innerHTML = '<div class="history-empty">Your rolls will appear here 🎲</div>'; return; }
+  list.innerHTML = rollHistory.slice(0,12).map(e => {
+    const color = getDiceColor(e.sides);
+    const emoji = getDiceEmoji(e.sides);
+    const time = new Date(e.ts).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    const detail = e.rolls.length > 1 ? `Rolls: [${e.rolls.join(', ')}]` : `1×D${e.sides}`;
+    return `<div class="history-item">
+      <div class="history-die-badge" style="background:${color}">${emoji}</div>
+      <div class="history-info">
+        <div class="history-result">D${e.sides} → ${e.total}</div>
+        <div class="history-detail">${detail}${e.modifier ? ` + ${e.modifier}` : ''}</div>
+      </div>
+      <div class="history-time">${time}</div>
+    </div>`;
+  }).join('');
+  
+  const fullList = document.getElementById('history-full-list');
+  if (!fullList) return;
+  if (!rollHistory.length) { fullList.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">No rolls yet — start rolling above! 🎲</div>'; return; }
+  fullList.innerHTML = rollHistory.slice(0,30).map(e => {
+    const color = getDiceColor(e.sides);
+    const emoji = getDiceEmoji(e.sides);
+    const time = new Date(e.ts).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    return `<div class="history-full-item">
+      <div class="history-die-badge" style="background:${color};width:44px;height:44px;font-size:.9rem">${emoji}</div>
+      <div class="history-info" style="flex:1">
+        <div style="font-weight:900;font-family:var(--font-mono)">D${e.sides} = <span style="color:${color}">${e.total}</span></div>
+        <div style="font-size:.78rem;color:var(--text-muted)">[${e.rolls.join(', ')}]${e.modifier ? ` ${e.modifier>0?'+':''}${e.modifier}` : ''}</div>
+      </div>
+      <div style="font-size:.72rem;color:var(--text-muted);font-family:var(--font-mono)">${time}</div>
+    </div>`;
+  }).join('');
+}
+
+function updateStatsDisplay() {
+  document.getElementById('stat-total-rolls').textContent = rollHistory.length;
+  if (!rollHistory.length) return;
+  const allTotals = rollHistory.map(e => e.total);
+  const highest = Math.max(...allTotals);
+  const avg = (allTotals.reduce((a,b)=>a+b,0)/allTotals.length).toFixed(1);
+  const dieCounts = {};
+  rollHistory.forEach(e => { dieCounts[e.sides] = (dieCounts[e.sides]||0)+1; });
+  const favSides = Object.entries(dieCounts).sort((a,b)=>b[1]-a[1])[0][0];
+  document.getElementById('stat-highest').textContent = highest;
+  document.getElementById('stat-average').textContent = avg;
+  document.getElementById('stat-fav-die').textContent = 'D'+favSides;
+}
+
+function clearHistory() {
+  rollHistory = [];
+  saveHistory();
+  updateHistoryDisplay();
+  updateStatsDisplay();
+  document.getElementById('stat-total-rolls').textContent = '0';
+  document.getElementById('stat-highest').textContent = '—';
+  document.getElementById('stat-average').textContent = '—';
+  document.getElementById('stat-fav-die').textContent = '—';
+  showToast('History cleared!');
+}
+document.getElementById('clear-quick-history').addEventListener('click', clearHistory);
+document.getElementById('clear-full-history').addEventListener('click', clearHistory);
+
+// ===== GAMES GRID =====
+const gamesGrid = document.getElementById('games-grid');
+GAMES_DATA.forEach(g => {
+  const card = document.createElement('div');
+  card.className = 'game-card reveal';
+  const tags = [...new Set(g.dice)].map(d => `<span class="game-dice-tag" style="background:${getDiceColor(parseInt(d.slice(1)))}">${d}</span>`).join('');
+  card.innerHTML = `
+    <span class="game-icon">${g.icon}</span>
+    <h3 class="game-title">${g.title}</h3>
+    <p class="game-desc">${g.desc}</p>
+    <div class="game-dice-tags">${tags}</div>
+    <button class="play-game-btn" data-game="${g.title}">🎲 Roll for ${g.title.split(' ')[0]}</button>`;
+  card.querySelector('.play-game-btn').addEventListener('click', () => {
+    const uniqueDice = [...new Set(g.dice.map(d => parseInt(d.slice(1))))];
+    const results = g.dice.map(d => {
+      const s = parseInt(d.slice(1));
+      return { s, v: randInt(s) };
+    });
+    const total = results.reduce((a,b) => a+b.v, 0);
+    const diceStr = results.map(r => `<span style="background:${getDiceColor(r.s)};padding:2px 10px;border-radius:8px;color:#fff;font-family:var(--font-mono);font-size:.85rem;font-weight:700">${r.v}</span>`).join(' ');
+    showToast(`${g.icon} ${g.title}: ${results.map(r=>r.v).join(' + ')} = ${total}`);
+    uniqueDice.forEach(s => rollDice(s, g.dice.filter(d => parseInt(d.slice(1)) === s).length, 0));
+  });
+  gamesGrid.appendChild(card);
+});
+
+// ===== FEATURES GRID =====
+const featGrid = document.getElementById('features-grid');
+FEATURES_DATA.forEach((f,i) => {
+  const card = document.createElement('div');
+  card.className = `feature-card reveal${i>0?' reveal-delay-'+(Math.min(i,4)):''}`;
+  card.innerHTML = `
+    <div class="feature-icon" style="background:${f.bg}">${f.icon}</div>
+    <h3 class="feature-title">${f.title}</h3>
+    <p class="feature-desc">${f.desc}</p>`;
+  featGrid.appendChild(card);
+});
+
+// ===== ABOUT SHOWCASE =====
+const showcase = document.getElementById('about-dice-showcase');
+DICE_CONFIG.forEach(d => {
+  const el = document.createElement('div');
+  el.className = 'showcase-die';
+  el.style.background = d.color;
+  el.innerHTML = `${d.emoji}<span>${d.label}</span>`;
+  showcase.appendChild(el);
+});
+
+// ===== FAQ =====
+const faqList = document.getElementById('faq-list');
+FAQ_DATA.forEach(f => {
+  const item = document.createElement('div');
+  item.className = 'faq-item';
+  item.innerHTML = `
+    <button class="faq-q">${f.q}<span class="faq-chevron">▾</span></button>
+    <div class="faq-a">${f.a}</div>`;
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    const wasOpen = item.classList.contains('open');
+    faqList.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+  faqList.appendChild(item);
+});
+
+// ===== SCROLL REVEAL =====
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ===== INIT =====
+updateHistoryDisplay();
+updateStatsDisplay();
+setActiveTab(6);
+renderFormula();
+</script>
+</body>
+</html>
