@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – DiceRollingApp</title>
+  <meta name="description" content="Meet M Abraham, the creator behind DiceRollingApp. Learn about our mission to provide the ultimate free online virtual dice roller." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://dicerollingapp.github.io/about.html" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --off-white: #f8f7ff;
+      --bg: #ffffff;
+      --text: #1a1040;
+      --text-muted: #6b5b95;
+      --accent1: #ff5e78;
+      --accent2: #ffaa00;
+      --accent3: #00c896;
+      --accent4: #5b8cff;
+      --accent5: #b96bff;
+      --shadow-sm: 0 2px 10px rgba(91,140,255,0.12);
+      --shadow-md: 0 6px 30px rgba(91,140,255,0.18);
+      --shadow-lg: 0 16px 60px rgba(91,140,255,0.22);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --header-h: 70px;
+      --font-main: 'Nunito', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-main);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    h1, h2, h3 { font-weight: 800; line-height: 1.25; color: var(--text); }
+    h1 { font-size: clamp(2.2rem, 4.5vw, 3rem); margin-bottom: 12px; }
+    h2 { font-size: 1.8rem; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid rgba(91,140,255,0.1); padding-bottom: 8px; }
+    p { margin-bottom: 20px; color: var(--text-muted); font-size: 1.05rem; text-align: justify; }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      z-index: 1000;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 2px solid rgba(91,140,255,0.12);
+      box-shadow: 0 4px 24px rgba(91,140,255,0.12);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo-icon { font-size: 1.8rem; }
+    .logo-accent { color: var(--accent1); }
+    .main-nav a {
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 50px;
+      color: var(--text-muted);
+      background: #f0edff;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .main-nav a:hover {
+      background: var(--accent4);
+      color: #fff;
+    }
+
+    /* ===== CONTENT AREA ===== */
+    .content-wrapper {
+      padding-top: calc(var(--header-h) + 50px);
+      padding-bottom: 80px;
+    }
+    .badge {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent1);
+      margin-bottom: 12px;
+      font-weight: 700;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .profile-card {
+      background: linear-gradient(145deg, #f8f7ff, #ffffff);
+      border-radius: var(--radius);
+      padding: 45px;
+      box-shadow: var(--shadow-md);
+      border: 2px solid rgba(91,140,255,0.1);
+      margin-bottom: 40px;
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 25px;
+      background: rgba(91,140,255,0.06);
+      padding: 15px 25px;
+      border-radius: var(--radius-sm);
+      border-left: 4px solid var(--accent4);
+    }
+    .author-avatar {
+      font-size: 2.2rem;
+    }
+    .author-details h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+    .author-details p {
+      margin: 0;
+      font-size: 0.9rem;
+      font-family: var(--font-mono);
+      color: var(--accent4);
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.6);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 4px solid var(--accent5);
+    }
+    .footer-links {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .footer-links a { color: rgba(255,255,255,0.8); font-weight: 600; text-decoration: none; }
+    .footer-links a:hover { color: var(--accent2); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <span class="logo-icon">🎲</span>
+        <span>Dice<span class="logo-accent">Rolling</span>App</span>
+      </a>
+      <nav class="main-nav">
+        <a href="/">← Back to Roller</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container content-wrapper">
+    <div class="profile-card">
+      <span class="badge">Our Mission</span>
+      <h1>About DiceRollingApp</h1>
+      
+      <p>DiceRollingApp was built to provide tabletop gamers, roleplayers, teachers, and decision-makers with a fluid, fast, and completely reliable online dice simulation engine. We understand that whether you are calculatedly navigating a dangerous dungeon crawl in your favorite RPG or setting up family board games, having instant access to accurate randomization changes everything.</p>
+
+      <p>Our infrastructure delivers lightweight, web-optimized mathematical processing to generate random sequences across an array of standard formats—including D4, D6, D8, D10, D12, D20, and D100 dice structures. Everything scales seamlessly directly inside your browser workspace with absolute telemetry privacy.</p>
+
+      <h2>The Developer Behind the Core Engine</h2>
+      <p>This web application was conceptualized, structured, and fine-tuned by <strong>M Abraham</strong>. Leveraging standard modern technical architectural configurations alongside strategic technical architecture practices, the application was structured from the ground up to ensure instantaneous client-side runtime calculations, zero layout shift disruptions, and excellent discovery reach over open search systems.</p>
+
+      <div class="author-info">
+        <div class="author-avatar">💻</div>
+        <div class="author-details">
+          <h3>M Abraham</h3>
+          <p>Web Developer & SEO Expert</p>
+        </div>
+      </div>
+
+      <h2>Why Choose DiceRollingApp?</h2>
+      <p>Unlike resource-heavy alternatives loaded with unnecessary script dependencies and profiling trackers, this tool prioritizes minimalist performance optimization. It processes clean random calculation models locally on your layout display without storing analytics data on external architectures. It is simple, clear, completely accessible, and always optimized for programmatic discovery.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DiceRollingApp. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
