@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use – DiceRollingApp</title>
+  <meta name="description" content="Terms of Use for DiceRollingApp. Review the terms, conditions, and usage policies for our free online dice roller." />
+  <meta name="robots" content="index, follow" />
+  <link class="canonical" href="https://dicerollingapp.github.io/terms.html" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --off-white: #f8f7ff;
+      --bg: #ffffff;
+      --text: #1a1040;
+      --text-muted: #6b5b95;
+      --accent1: #ff5e78;
+      --accent2: #ffaa00;
+      --accent3: #00c896;
+      --accent4: #5b8cff;
+      --accent5: #b96bff;
+      --shadow-sm: 0 2px 10px rgba(91,140,255,0.12);
+      --shadow-md: 0 6px 30px rgba(91,140,255,0.18);
+      --shadow-lg: 0 16px 60px rgba(91,140,255,0.22);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --header-h: 70px;
+      --font-main: 'Nunito', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-main);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    h1, h2, h3, h4 { font-weight: 800; line-height: 1.25; color: var(--text); }
+    h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 10px; }
+    h2 { font-size: 1.6rem; margin-top: 36px; margin-bottom: 16px; border-bottom: 2px solid rgba(91,140,255,0.1); padding-bottom: 8px; }
+    p { margin-bottom: 18px; color: var(--text-muted); font-size: 1rem; }
+    ul { list-style: dotted; margin-left: 24px; margin-bottom: 18px; color: var(--text-muted); }
+    li { margin-bottom: 8px; }
+    a { color: var(--accent4); text-decoration: none; font-weight: 700; transition: color 0.2s; }
+    a:hover { color: var(--accent1); }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      z-index: 1000;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 2px solid rgba(91,140,255,0.12);
+      box-shadow: 0 4px 24px rgba(91,140,255,0.12);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--text);
+    }
+    .logo-icon { font-size: 1.8rem; }
+    .logo-accent { color: var(--accent1); }
+    .main-nav a {
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 50px;
+      color: var(--text-muted);
+      background: #f0edff;
+      transition: all 0.2s;
+    }
+    .main-nav a:hover {
+      background: var(--accent4);
+      color: #fff;
+    }
+
+    /* ===== LEGAL CONTENT ===== */
+    .legal-wrapper {
+      padding-top: calc(var(--header-h) + 50px);
+      padding-bottom: 80px;
+      min-height: 80vh;
+    }
+    .legal-meta {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent1);
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+    .legal-card {
+      background: linear-gradient(145deg, #f8f7ff, #ffffff);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      border: 2px solid rgba(91,140,255,0.1);
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.6);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 4px solid var(--accent5);
+    }
+    .footer-links {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .footer-links a { color: rgba(255,255,255,0.8); font-weight: 600; }
+    .footer-links a:hover { color: var(--accent2); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <span class="logo-icon">🎲</span>
+        <span>Dice<span class="logo-accent">Rolling</span>App</span>
+      </a>
+      <nav class="main-nav">
+        <a href="/">← Back to Roller</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container legal-wrapper">
+    <div class="legal-card">
+      <h1>Terms of Use</h1>
+      <div class="legal-meta">Last Updated: May 30, 2026</div>
+
+      <p>By entering and using DiceRollingApp (accessible via <a href="https://dicerollingapp.github.io/">https://dicerollingapp.github.io/</a>), you agree to comply with and be bound by the following terms, agreements, and operating conditions. If you do not accept these policies, you must immediately stop using our services.</p>
+
+      <h2>1. Permitted Use of Service</h2>
+      <p>DiceRollingApp delivers a free online virtual dice roller intended for entertainment, educational reference, random selections, and tabletop board game calculations. You are granted a limited license to roll dice configurations strictly under the following conditions:</p>
+      <ul>
+        <li>You will not use automated bot scrapers, load scripts, or server-intensive requests that disrupt application stability.</li>
+        <li>The system must not be refactored into unauthorized real-money gaming operations or illicit betting networks.</li>
+        <li>You agree not to bypass front-end security configurations or attempt resource injections.</li>
+      </ul>
+
+      <h2>2. Intellectual Property Rights</h2>
+      <p>All front-end asset distributions, layout graphics, color rules, dynamic code frameworks, source interfaces, custom text configurations, and stylistic combinations are the property of DiceRollingApp. No individual components can be re-hosted, repackaged, or repackaged into commercial clones without explicit authorization.</p>
+
+      <h2>3. Performance and Randomization Warranty</h2>
+      <p>Our calculation processes are driven by JavaScript's client-side pseudo-random number configurations. While optimized for fair distribution inside common board games and RPG scenarios, these generated values are provided "as-is". We make no warranties that our platform is completely error-free or suitable for official high-stakes security selections.</p>
+
+      <h2>4. Limitation of Operational Liability</h2>
+      <p>In no event shall DiceRollingApp, its project contributors, or site operators be held responsible for damages, gaming losses, data corruption, or operational interruptions resulting from unexpected service downtime or erroneous numerical configurations.</p>
+
+      <h2>5. Dynamic Terms Revisions</h2>
+      <p>We reserve the right to modify this structural documentation layout at any time without individual notices. All changes will be committed directly onto this interface. Continuing to run calculations through our environment implies full authorization of active policies.</p>
+
+      <h2>6. Governing Law</h2>
+      <p>These terms and user agreements are defined and constructed in alignment with applicable local regulations. Any disputes involving functionality will be handled inside authorized municipal structures.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DiceRollingApp. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
